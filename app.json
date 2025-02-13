@@ -1,11 +1,11 @@
 {
   "expo": {
-    "name": "habit-tracker",
-    "slug": "habit-tracker",
+    "name": "Aorora",
+    "slug": "Aorora",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
-    "scheme": "myapp",
+    "scheme": "Aorora",
     "userInterfaceStyle": "automatic",
     "newArchEnabled": true,
     "ios": {
