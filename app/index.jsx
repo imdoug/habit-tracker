@@ -5,9 +5,9 @@ import { StatusBar } from "expo-status-bar";
  export default function App (){
     return(
         <View className="flex-1 items-center justify-center bg-white">
-            <Text className="text-3xl">Aorora</Text>
+            <Text className="text-3xl font-pblack">Aorora</Text>
             <StatusBar style="auto"/>
-            <Link href={'/profile'} style={{color: 'blue'}}> Go to profile</Link>
+            <Link href={'/home'} style={{color: 'blue'}}> Go to profile</Link>
         </View>
     )
  }
