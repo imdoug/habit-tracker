@@ -5,6 +5,7 @@ import { images } from '../../constants'
 import FromField from '../../components/FromField'
 import  CustomButton from '../../components/CustomButton'
 import { Link } from 'expo-router'
+import { createUser } from '../../lib/appwrite'
 
 const SingUp = () => {
   const [form, setForm] = useState({
@@ -15,7 +16,7 @@ const SingUp = () => {
   const [isSubmitting, setIsSubmitting] = useState()
 
   const submitForm = () =>{
-
+    createUser()
   }
   
 
