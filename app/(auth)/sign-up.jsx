@@ -1,11 +1,13 @@
-import { View, Text, ScrollView, Image } from 'react-native'
+import { View, Text, ScrollView, Image, Alert } from 'react-native'
 import React, { useState } from 'react'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import { images } from '../../constants'
 import FromField from '../../components/FromField'
 import  CustomButton from '../../components/CustomButton'
-import { Link } from 'expo-router'
+import { Link, router } from 'expo-router'
 import { createUser } from '../../lib/appwrite'
+import { TypePredicateKind } from 'typescript'
+import { useGlobalContext } from '../../context/GlobalProvider'
 
 const SingUp = () => {
   const [form, setForm] = useState({
@@ -14,9 +16,27 @@ const SingUp = () => {
     username: ''
   })
   const [isSubmitting, setIsSubmitting] = useState()
+  const {setUser, setIsLoggedIn} = userGlobalContext()
 
-  const submitForm = () =>{
-    createUser()
+  const submitForm = async() =>{
+    if(!form.username || !form.email || !form.password){
+      Alert.alert('Error', 'Please fill in all the fields')
+    }
+
+    setIsSubmitting(true)
+
+    try {
+      const result = await createUser(form.email,form.password,form.username)
+      setUser(result)
+      setIsLoggedIn(true)
+
+      router.replace('/home')
+    } catch (error) {
+      Alert.alert('Error', error.message)
+    }
+    finally{
+      setIsSubmitting(false)
+    }
   }
   
 
