@@ -6,7 +6,6 @@ import FromField from '../../components/FromField'
 import  CustomButton from '../../components/CustomButton'
 import { Link, router } from 'expo-router'
 import { createUser } from '../../lib/appwrite'
-import { TypePredicateKind } from 'typescript'
 import { useGlobalContext } from '../../context/GlobalProvider'
 
 const SingUp = () => {
@@ -16,7 +15,7 @@ const SingUp = () => {
     username: ''
   })
   const [isSubmitting, setIsSubmitting] = useState()
-  const {setUser, setIsLoggedIn} = userGlobalContext()
+  const {setUser, setIsLoggedIn} = useGlobalContext()
 
   const submitForm = async() =>{
     if(!form.username || !form.email || !form.password){
