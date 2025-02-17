@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { Alert, FlatList, Image, RefreshControl, Text, View } from "react-native";
+import { useGlobalContext } from "../../context/GlobalProvider";
 
 import { images } from "../../constants";
 // import useAppwrite from "../../lib/useAppwrite";
@@ -8,12 +9,14 @@ import { images } from "../../constants";
 import SearchField from "../../components/SearchField";
  import Trending from "../../components/Trending";
 import EmptyState from "../../components/EmptyState";
-import { getAllPosts } from '../../lib/appwrite'
+import { getAllPosts, getLatestPosts } from '../../lib/appwrite'
 import useAppwrite from "../../lib/useAppwrite";
 import VideoCard from "../../components/VideoCard";
 
 const Home = () => {
 
+  const { user } = useGlobalContext();
+  const { data: latestPosts } = useAppwrite(getLatestPosts)
   const { data: posts, refetch } = useAppwrite(getAllPosts)
   const [refreshing, setRefreshing] = useState(false)
 
@@ -28,7 +31,6 @@ const Home = () => {
   return (
     <SafeAreaView className="bg-primary h-full">
       <FlatList
-       // data={[]}
          data={posts}
         keyExtractor={(item) => item.$id }
         renderItem={({item})=>(
@@ -42,7 +44,7 @@ const Home = () => {
                   Welcome Back
                 </Text>
                 <Text className="text-2xl font-psemibold text-white">
-                  Doug
+                  {user?.username}
                 </Text>
               </View>
 
@@ -62,7 +64,7 @@ const Home = () => {
                 Latest Videos
               </Text>
 
-             <Trending posts={ [{id:1},{id:2},{id:3}] ?? []} /> 
+             <Trending posts={ latestPosts ?? []} /> 
             </View>
             </View>
         )}
