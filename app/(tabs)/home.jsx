@@ -1,11 +1,9 @@
-import { useEffect, useState } from "react";
+import {  useState } from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
-import { Alert, FlatList, Image, RefreshControl, Text, View } from "react-native";
+import {  FlatList, Image, RefreshControl, Text, View } from "react-native";
 import { useGlobalContext } from "../../context/GlobalProvider";
 
 import { images } from "../../constants";
-// import useAppwrite from "../../lib/useAppwrite";
-//import { getAllPosts, getLatestPosts } from "../../lib/appwrite";
 import SearchField from "../../components/SearchField";
  import Trending from "../../components/Trending";
 import EmptyState from "../../components/EmptyState";

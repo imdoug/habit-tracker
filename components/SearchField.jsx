@@ -4,8 +4,8 @@ import { View, TouchableOpacity, Image, TextInput, Alert } from "react-native";
 
 import { icons } from "../constants";
 
-const SearchInput = ({ initialQuery }) => {
-  //const pathname = usePathname();
+const SearchField = ({ initialQuery }) => {
+  const pathname = usePathname();
   const [query, setQuery] = useState(initialQuery || "");
 
   return (
@@ -15,7 +15,7 @@ const SearchInput = ({ initialQuery }) => {
         value={query}
         placeholder="Search a video topic"
         placeholderTextColor="#CDCDE0"
-       /// onChangeText={(e) => setQuery(e)}
+        onChangeText={(e) => setQuery(e)}
       />
 
       <TouchableOpacity
@@ -26,8 +26,8 @@ const SearchInput = ({ initialQuery }) => {
               "Please input something to search results across database"
             );
 
-         // if (pathname.startsWith("/search")) router.setParams({ query });
-         // else router.push(`/search/${query}`);
+          if (pathname.startsWith("/search")) router.setParams({ query });
+          else router.push(`/search/${query}`);
         }}
       >
         <Image source={icons.search} className="w-5 h-5" resizeMode="contain" />
@@ -36,4 +36,4 @@ const SearchInput = ({ initialQuery }) => {
   );
 };
 
-export default SearchInput;
+export default SearchField;

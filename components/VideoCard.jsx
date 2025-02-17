@@ -4,21 +4,21 @@ import { useEvent } from 'expo';
 import { icons } from '../constants'
 import { useVideoPlayer, VideoView } from "expo-video";
 
-const VideoCard = ({video: {title, thumbnail, video, creator: { username, avatar}}}) => {
+const VideoCard = ({video: { title, thumbnail, video, creator: { username, avatar}}}) => {
     const [play, setPlay] = useState(false)
 
     const player = useVideoPlayer(video, player => {
         player.loop = true;
       });
 
-        const { isPlaying } = useEvent(player, 'playingChange', { isPlaying: player.playing });
+    const { isPlaying } = useEvent(player, 'playingChange', { isPlaying: player.playing });
       
 
   return (
     <View className="flex-col items-center px-4 mb-14">
         <View className="flex-row gap-3 items-start">
             <View className="justify-center items-center flex-row flex-1">
-                <View className="w-[46px] h-[46px] border border-secondary justify-center items-center p-0.5">
+                <View className="w-[46px] h-[46px] justify-center items-center p-0.5">
                     <Image source={{uri: avatar}} className="w-full h-full rounded-lg" resizeMode='cover'/>
                 </View>
                 <View className="justify-center flex-1 gap-y-1 ml-3">

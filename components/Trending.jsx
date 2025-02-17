@@ -6,8 +6,7 @@ import {
   Image,
   ImageBackground,
   TouchableOpacity,
-  StyleSheet,
-  Button
+  StyleSheet
 } from "react-native";
 
 import { icons } from "../constants";
