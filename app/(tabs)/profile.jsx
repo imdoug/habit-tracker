@@ -1,6 +1,6 @@
 
 import { SafeAreaView } from "react-native-safe-area-context";
-import { FlatList, Text, TouchableOpacity, View, Image } from "react-native";
+import { FlatList, TouchableOpacity, View, Image } from "react-native";
 
 import EmptyState from "../../components/EmptyState";
 import { getUserPosts, signOut } from '../../lib/appwrite'

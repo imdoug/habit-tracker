@@ -2,7 +2,7 @@ import { View, Text, ScrollView, Image, Alert } from 'react-native'
 import React, { useState } from 'react'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import { images } from '../../constants'
-import FromField from '../../components/FromField'
+import FormField from '../../components/FormField'
 import  CustomButton from '../../components/CustomButton'
 import { Link, router } from 'expo-router'
 import { createUser } from '../../lib/appwrite'
@@ -47,20 +47,20 @@ const SingUp = () => {
           <Text className="text-2xl text-white text-semibold mt-10 font-psemibold">
             Sign Up to Aorora
           </Text>
-          <FromField 
+          <FormField 
             title="Username"
             value={form.username}
             handleChangeText={(e)=> setForm({...form, username: e})}
             otherStyles="mt-10"
           />
-          <FromField 
+          <FormField 
             title="Email"
             value={form.email}
             handleChangeText={(e)=> setForm({...form, email: e})}
             otherStyles="mt-7"
             keyboardType="email-address"
           />
-           <FromField 
+           <FormField 
             title="Password"
             value={form.password}
             handleChangeText={(e)=> setForm({...form, password: e})}
